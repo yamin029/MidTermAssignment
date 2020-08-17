@@ -10,14 +10,18 @@
 
    <RelativeLayout
        android:layout_width="match_parent"
-       android:layout_height="match_parent">
+       android:layout_height="match_parent"
+       android:gravity="center">
 
       <ImageView
           android:id="@+id/ivImage"
-          android:layout_width="match_parent"
+          android:layout_width="200dp"
           android:layout_height="400px"
           android:paddingBottom="30px"
-          android:src="@drawable/mood">
+          android:src="@drawable/mood"
+          android:layout_centerHorizontal="true"
+          android:onClick="chooseImage"
+          >
 
       </ImageView>
 
@@ -26,29 +30,49 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_below="@+id/ivImage"
-          android:hint="Enter Your First Name"></EditText>
+          android:height="60dp"
+          android:hint="Enter Your First Name">
+
+      </EditText>
 
       <EditText
           android:id="@+id/etLastName"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_below="@+id/etFirstName"
-          android:hint="Enter Your Last Name"></EditText>
+          android:height="60dp"
+          android:hint="Enter Your Last Name">
+
+      </EditText>
 
       <EditText
-          android:id="@+id/etBOD"
+          android:id="@+id/etDOB"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_below="@+id/etLastName"
-          android:hint="Enter Your Birth of Date"></EditText>
+          android:height="60dp"
+          android:hint="Enter Your Birth of Date">
+
+      </EditText>
+      <EditText
+          android:id="@+id/etAddress"
+          android:layout_width="match_parent"
+          android:layout_height="300px"
+          android:layout_below="@+id/etDOB"
+          android:hint="Enter Your Address"
+          android:textAlignment="viewStart">
+
+      </EditText>
 
       <EditText
           android:id="@+id/etEducation"
           android:layout_width="match_parent"
           android:layout_height="300px"
-          android:layout_below="@+id/etBOD"
+          android:layout_below="@+id/etAddress"
           android:hint="Enter Your Education"
-          android:textAlignment="viewStart"></EditText>
+          android:textAlignment="viewStart">
+
+      </EditText>
 
       <EditText
           android:id="@+id/etSkills"
@@ -56,7 +80,9 @@
           android:layout_height="300px"
           android:layout_below="@+id/etEducation"
           android:hint="Enter Your Skills"
-          android:textAlignment="viewStart"></EditText>
+          android:textAlignment="viewStart">
+
+      </EditText>
 
       <EditText
           android:id="@+id/etExperiences"
@@ -64,14 +90,17 @@
           android:layout_height="300px"
           android:layout_below="@+id/etSkills"
           android:hint="Enter Your Experiences"
-          android:textAlignment="viewStart"></EditText>
+          android:textAlignment="viewStart">
+
+      </EditText>
 
       <Button
           android:id="@+id/btnCreateCV"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_below="@+id/etExperiences"
-          android:text="Create CV">
+          android:text="Create CV"
+          android:onClick="storeData">
 
       </Button>
 
