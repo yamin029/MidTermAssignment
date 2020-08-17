@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20px"
+    android:textAlignment="textStart"
+    tools:context=".MainActivity">
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+      <ImageView
+          android:id="@+id/ivImage"
+          android:layout_width="match_parent"
+          android:layout_height="400px"
+          android:paddingBottom="30px"
+          android:src="@drawable/mood">
+
+      </ImageView>
+
+      <EditText
+          android:id="@+id/etFirstName"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/ivImage"
+          android:hint="Enter Your First Name"></EditText>
+
+      <EditText
+          android:id="@+id/etLastName"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/etFirstName"
+          android:hint="Enter Your Last Name"></EditText>
+
+      <EditText
+          android:id="@+id/etBOD"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/etLastName"
+          android:hint="Enter Your Birth of Date"></EditText>
+
+      <EditText
+          android:id="@+id/etEducation"
+          android:layout_width="match_parent"
+          android:layout_height="300px"
+          android:layout_below="@+id/etBOD"
+          android:hint="Enter Your Education"
+          android:textAlignment="viewStart"></EditText>
+
+      <EditText
+          android:id="@+id/etSkills"
+          android:layout_width="match_parent"
+          android:layout_height="300px"
+          android:layout_below="@+id/etEducation"
+          android:hint="Enter Your Skills"
+          android:textAlignment="viewStart"></EditText>
+
+      <EditText
+          android:id="@+id/etExperiences"
+          android:layout_width="match_parent"
+          android:layout_height="300px"
+          android:layout_below="@+id/etSkills"
+          android:hint="Enter Your Experiences"
+          android:textAlignment="viewStart"></EditText>
+
+      <Button
+          android:id="@+id/btnCreateCV"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/etExperiences"
+          android:text="Create CV">
+
+      </Button>
+
+   </RelativeLayout>
+
+
+</ScrollView>
