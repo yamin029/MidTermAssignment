@@ -2,13 +2,16 @@ package com.example.midterm;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.annotation.Nullable;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 
@@ -44,6 +47,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void storeUserInformation(ModelClass objectModelClass){
         try{
             SQLiteDatabase objectSQLiteDatabase = this.getWritableDatabase();
+            objectSQLiteDatabase.execSQL("DELETE FROM userInfo");
             Bitmap imageToStoreBitmap=objectModelClass.getmImage();
 
             objectByteArrayOutputStream = new ByteArrayOutputStream();
@@ -77,5 +81,39 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM userInfo"); //delete all rows in a table
         db.close();
+    }
+
+    public ArrayList<ModelClass> getUserInfo(){
+        try {
+            SQLiteDatabase objectSQLiteDatabase = this.getReadableDatabase();
+
+            ArrayList<ModelClass> objectModelClassList = new ArrayList<>();
+
+            Cursor objectCursor = objectSQLiteDatabase.rawQuery("select * from userInfo",null);
+            if(objectCursor.getCount() != 0){
+                while (objectCursor.moveToNext()){
+                    byte [] imageBytes = objectCursor.getBlob(0);
+                    Bitmap objectBitmap = BitmapFactory.decodeByteArray(imageBytes,0,imageBytes.length);
+                    String firstName = objectCursor.getString(1);
+                    String lastName = objectCursor.getString(2);
+                    String DOB = objectCursor.getString(3);
+                    String address = objectCursor.getString(4);
+                    String education = objectCursor.getString(5);
+                    String skills = objectCursor.getString(6);
+                    String experiences = objectCursor.getString(7);
+                    objectModelClassList.add(new ModelClass(objectBitmap,firstName,lastName,DOB,address,education,skills,experiences));
+                }
+                return objectModelClassList;
+            }
+            else {
+                Toast.makeText(context, "No values exit in the database", Toast.LENGTH_SHORT).show();
+                return null;
+            }
+        }
+        catch (Exception e){
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+            return null;
+
+        }
     }
 }

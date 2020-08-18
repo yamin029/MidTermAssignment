@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     private Uri imageFilePath;
     private Bitmap imageTOStore;
 
+    private int dataIsSaved = 0;
+
     DatabaseHandler objectDatabaseHandler;
 
     private static String[] PERMISSIONS_STORAGE = {
@@ -105,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
                 objectDatabaseHandler.storeUserInformation(
                         new ModelClass(imageTOStore,cEtFirstName.getText().toString(),cEtLastName.getText().toString(),cEtDob.getText().toString(),cEtAddress.getText().toString(),cEtEducation.getText().toString(),cEtSkills.getText().toString(),cEtExperiences.getText().toString())
                 );
+                dataIsSaved = 1;
             }
             else {
                 Toast.makeText(this, "please provide all the information", Toast.LENGTH_SHORT).show();
@@ -121,6 +124,17 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         objectDatabaseHandler.deleteAllRecord();
 
+
+    }
+
+    public void showUserInfo(View view) {
+        if(dataIsSaved == 1){
+            Intent i = new Intent(getApplicationContext(),User_Info.class);
+            startActivity(i);
+        }
+        else {
+            Toast.makeText(this, "Save the data First", Toast.LENGTH_SHORT).show();
+        }
 
     }
 }
